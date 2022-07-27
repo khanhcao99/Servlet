@@ -10,12 +10,18 @@
 <html>
 <head>
     <title>Delete customer</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
 <h1>Delete customer</h1>
 <p>
-    <a href="/customers">Back to customer list</a>
+    <button><a href="/customers">Back to customer list</a></button>
+
 </p>
 <form method="post" action="">
     <h3>Are you sure?</h3>
@@ -28,7 +34,7 @@
         <legend>Customer information</legend>
         <table>
             <tr>
-                <td>Name: </td>
+                <td>Id: </td>
                 <td>${requestScope["customer"].getName()}</td>
             </tr>
             <tr>
@@ -41,7 +47,7 @@
             </tr>
             <tr>
                 <td><input type="submit" value="Delete customer"></td>
-                <td><a href="/customers">Back to customer list</a></td>
+                <td><button><a href="/customers">Back to customer list</a></button>  </td>
             </tr>
         </table>
     </fieldset>

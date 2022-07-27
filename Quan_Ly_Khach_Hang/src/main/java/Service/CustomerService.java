@@ -13,7 +13,7 @@ public interface CustomerService{
 
     Customer findById(int id);
 
-    void update(int id, Customer customer);
+    void update( Customer customer);
 
     void delete(int id);
 

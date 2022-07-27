@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>Edit customer</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <h1>Edit customer</h1>
@@ -20,7 +25,8 @@
 </p>
 
 <p>
-    <a href="/customers">Back to customer list</a>
+    <button><a href="/customers">Back to customer list</a></button>
+
 </p>
 <form method="post" action="">
     <fieldset>

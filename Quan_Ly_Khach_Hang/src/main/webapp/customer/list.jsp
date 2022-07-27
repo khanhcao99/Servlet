@@ -10,11 +10,20 @@
 <html>
 <head>
     <title>Customer List</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        table{
+            height: 350px;
+        }
+    </style>
 </head>
 <body>
+<div align="center">
     <h1>Customer</h1>
     <p>
-        <a href="/customers?action=create">Create new customer</a>
+        <button><a href="/customers?action=create">Create new customer</a></button>
     </p>
     <table border="1">
         <tr>
@@ -23,17 +32,21 @@
             <td>Address</td>
             <td>Edit</td>
             <td>Delete</td>
+            <td>View</td>
         </tr>
         <c:forEach items='${requestScope["customers"]}' var="c" >
             <tr>
                 <td><a href="/customers?action=view&id=${c.getId()}">${c.getName()}</a></td>
                 <td>${c.getEmail()}</td>
                 <td>${c.getAddress()}</td>
-                <td><a href="/customers?action=edit&id=${c.getId()}">edit</a></td>
-                <td><a href="/customers?action=delete&id=${c.getId()}">delete</a></td>
+                <td><button><a href="/customers?action=edit&id=${c.getId()}">edit</a></button> </td>
+                <td><button> <a href="/customers?action=delete&id=${c.getId()}">delete</a></button></td>
+                <td><button><a href="/customers?action=view&id=${c.getId()}">view</a></button> </td>
             </tr>
         </c:forEach>
 
     </table>
+</div>
+
 </body>
 </html>

@@ -1,19 +1,19 @@
 package Controller;
 
 import Model.Customer;
-import Service.CustomerService;
 import Service.CustomerServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", value = "/customers")
 public class CustomerServlet extends HttpServlet {
 
-    private CustomerServiceImpl customerService = new CustomerServiceImpl();
+    private final CustomerServiceImpl customerService = new CustomerServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -67,14 +67,12 @@ public class CustomerServlet extends HttpServlet {
 
 //    Phương thức listCustomers(request, response) nhận về danh sách khách hàng và chuyển sang view customer/list.jsp để hiển thị.
     private void listCustomers(HttpServletRequest request, HttpServletResponse response){
-        List<Customer> customers = customerService.findAll();
+        ArrayList<Customer> customers = customerService.findAll();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/list.jsp");
         request.setAttribute("customers", customers);
         try {
             requestDispatcher.forward(request,response);
-        }catch (ServletException e){
-            e.printStackTrace();
-        }catch (IOException e){
+        }catch (ServletException | IOException e){
             e.printStackTrace();
         }
     }
@@ -120,7 +118,7 @@ public class CustomerServlet extends HttpServlet {
             customer.setName(name);
             customer.setEmail(email);
             customer.setAddress(address);
-            customerService.update(id, customer);
+            customerService.update(customer);
             request.setAttribute("customer", customer);
             request.setAttribute("message", "Customer information was updated");
             dispatcher = request.getRequestDispatcher("customer/edit.jsp");

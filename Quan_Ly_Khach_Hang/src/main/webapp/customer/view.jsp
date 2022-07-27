@@ -10,14 +10,24 @@
 <html>
 <head>
     <title>View customer</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 
 <h1>Customer details</h1>
 <p>
-    <a href="/customers">Back to customer list</a>
+    <button> <a href="/customers">Back to customer list</a></button>
+
 </p>
 <table>
+    <tr>
+        <td>Name: </td>
+        <td>${requestScope["customer"].getId()}</td>
+    </tr>
     <tr>
         <td>Name: </td>
         <td>${requestScope["customer"].getName()}</td>
